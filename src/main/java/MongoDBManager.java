@@ -55,8 +55,7 @@ public class MongoDBManager {
         coll.insertOne(doc);
     }
 
-    public void printAlldocumentsInCollection(MongoCollection coll)
-    {
+    public void printAlldocumentsInCollection(MongoCollection coll) {
         FindIterable<Document> iterDoc = coll.find();
         Iterator it = iterDoc.iterator();
         while (it.hasNext()) {
@@ -64,12 +63,11 @@ public class MongoDBManager {
         }
     }
 
-    public void update(MongoCollection coll, Bson query, Bson updates){
-        coll.updateOne(query,updates);
+    public void update(MongoCollection coll, Bson query, Bson updates) {
+        coll.updateOne(query, updates);
     }
 
-    public void delete(MongoCollection coll,Bson query)
-    {
+    public void delete(MongoCollection coll, Bson query) {
         coll.deleteMany(query);
     }
 
