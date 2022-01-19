@@ -6,12 +6,9 @@ import com.mongodb.client.MongoIterable;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
-import java.util.Iterator;
-
-
 public class MongoDBManager {
 
-    private static MongoClient mongoClient;
+    private MongoClient mongoClient;
 
     public void connectMongoDB(String host, int port) {
         this.mongoClient = new MongoClient(host, port);
@@ -20,13 +17,6 @@ public class MongoDBManager {
     public MongoIterable<String> getListofDatabases() {
         MongoIterable<String> list = mongoClient.listDatabaseNames();
         return list;
-    }
-
-    public void printListofDatabases() {
-        MongoIterable<String> list = getListofDatabases();
-        for (String name : list) {
-            System.out.println(name);
-        }
     }
 
     public MongoDatabase getDB(String dbName) {
@@ -44,31 +34,26 @@ public class MongoDBManager {
         return list;
     }
 
-    public void printListofCollections(String dbName) {
-        MongoIterable<String> list = getListofCollections(dbName);
-        for (String name : list) {
-            System.out.println(name);
-        }
+    public void insertIntoCollection(String collection, String db, Document doc) {
+        getCollection(collection, db).insertOne(doc);
     }
 
-    public void insertIntoCollection(MongoCollection coll, Document doc) {
-        coll.insertOne(doc);
+    public FindIterable<Document> findDocsWithQuery(String coll, String db, Document query) {
+        FindIterable<Document> iterDoc = getCollection(coll, db).find(query);
+        return iterDoc;
     }
 
-    public void printAlldocumentsInCollection(MongoCollection coll) {
-        FindIterable<Document> iterDoc = coll.find();
-        Iterator it = iterDoc.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+    public FindIterable<Document> getAlldocumentsInCollection(String coll, String db) {
+        FindIterable<Document> iterDoc = getCollection(coll, db).find();
+        return iterDoc;
     }
 
-    public void update(MongoCollection coll, Bson query, Bson updates) {
-        coll.updateOne(query, updates);
+    public void update(String coll, String db, Bson query, Bson updates) {
+        getCollection(coll, db).updateOne(query, updates);
     }
 
-    public void delete(MongoCollection coll, Bson query) {
-        coll.deleteMany(query);
+    public void delete(String coll, String db, Bson query) {
+        getCollection(coll, db).deleteMany(query);
     }
 
 }

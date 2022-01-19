@@ -1,38 +1,21 @@
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-
 public class MainApplication {
-    private static MongoDBManager mongoDBManager = new MongoDBManager();
+    private static ProductsManager productsManager = new ProductsManager();
 
     public static void main(String[] args) {
-        mongoDBManager.connectMongoDB("localhost", 27018);
-        MongoDatabase shop = mongoDBManager.getDB("shop");
-        MongoCollection products = mongoDBManager.getCollection("products", "shop");
-        System.out.println("List of Databases:");
-        mongoDBManager.printListofDatabases();
-        System.out.println("List of Collections in shop:");
-        mongoDBManager.printListofCollections("shop");
-        Document doc = new Document();
-        doc.append("name", "pen");
-        doc.append("price", 10);
-        doc.append("stock", 20);
-        mongoDBManager.insertIntoCollection(products, doc);
-        Document doc1 = new Document();
-        doc.append("name", "pencil");
-        doc.append("price", 5);
-        doc.append("stock", 25);
-        mongoDBManager.insertIntoCollection(products, doc1);
-        System.out.println("List of Documents in products:");
-        mongoDBManager.printAlldocumentsInCollection(products);
-        Document query = new Document().append("name", "pen");
-        Document update = new Document().append("$set", new Document().append("price", 20));
-        mongoDBManager.update(products, query, update);
-        System.out.println("List of Documents in products after update:");
-        mongoDBManager.printAlldocumentsInCollection(products);
-        mongoDBManager.delete(products, query);
-        System.out.println("List of Documents in products after deletion:");
-        mongoDBManager.printAlldocumentsInCollection(products);
+
+        Product p1 = new Product("pen", 16, 28);
+        Product p2 = new Product("pencil", 55, 5);
+
+        productsManager.insert(p1);
+        productsManager.insert(p2);
+
+        productsManager.printDocumentsByName("pen");
+
+        productsManager.updatePrice("pen", 12);
+        productsManager.updateStock("pencil", 14);
+        productsManager.updatePriceAndStock("pen", 20, 23);
+        productsManager.deleteDocByName("pen");
+
     }
 
 }
