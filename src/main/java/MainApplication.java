@@ -3,8 +3,6 @@ public class MainApplication {
 
     public static void main(String[] args) {
 
-        productsManager.connectDB();
-
         Product p1 = new Product("pen", 16, 28);
         Product p2 = new Product("pencil", 55, 5);
 

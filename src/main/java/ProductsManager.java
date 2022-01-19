@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class ProductsManager {
     MongoDBManager mongoDBManager = new MongoDBManager();
 
-    public void connectDB() {
+    public ProductsManager() {
         mongoDBManager.connectMongoDB("localhost", 27018);
     }
 
