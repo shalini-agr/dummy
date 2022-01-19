@@ -51,24 +51,29 @@ public class MongoDBManager {
         }
     }
 
-    public void insertIntoCollection(MongoCollection coll, Document doc) {
-        coll.insertOne(doc);
+    public void insertIntoCollection(String collection, String db, Document doc) {
+        getCollection(collection, db).insertOne(doc);
     }
 
-    public void printAlldocumentsInCollection(MongoCollection coll) {
-        FindIterable<Document> iterDoc = coll.find();
+    public FindIterable<Document> findDocsWithQuery(String coll, String db, Document query) {
+        FindIterable<Document> iterDoc = getCollection(coll, db).find(query);
+        return iterDoc;
+    }
+
+    public void printAlldocumentsInCollection(String coll, String db) {
+        FindIterable<Document> iterDoc = getCollection(coll, db).find();
         Iterator it = iterDoc.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }
     }
 
-    public void update(MongoCollection coll, Bson query, Bson updates) {
-        coll.updateOne(query, updates);
+    public void update(String coll, String db, Bson query, Bson updates) {
+        getCollection(coll, db).updateOne(query, updates);
     }
 
-    public void delete(MongoCollection coll, Bson query) {
-        coll.deleteMany(query);
+    public void delete(String coll, String db, Bson query) {
+        getCollection(coll, db).deleteMany(query);
     }
 
 }
