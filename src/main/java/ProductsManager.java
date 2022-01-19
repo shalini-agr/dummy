@@ -4,16 +4,17 @@ import org.bson.Document;
 import java.util.Iterator;
 
 public class ProductsManager {
-    private static MongoDBManager mongoDBManager = new MongoDBManager();
-    private static String name;
-    private static int price;
-    private static int stock;
+    MongoDBManager mongoDBManager = new MongoDBManager();
 
-    public void insert(String name, int price, int stock) {
+    public void connectDB() {
+        mongoDBManager.connectMongoDB("localhost", 27018);
+    }
+
+    public void insert(Product p) {
         Document doc = new Document();
-        doc.append("name", name);
-        doc.append("price", price);
-        doc.append("stock", stock);
+        doc.append("name", p.getName());
+        doc.append("price", p.getPrice());
+        doc.append("stock", p.getStock());
         mongoDBManager.insertIntoCollection("products", "shop", doc);
     }
 
