@@ -27,6 +27,7 @@ public class ProductsManager {
         List<Product> list = new ArrayList<Product>();
         for (Document document : iterDoc) {
             Product p = new Product((String) document.get("name"), (Integer) document.get("price"), (Integer) document.get("stock"));
+            list.add(p);
         }
         return list;
     }
