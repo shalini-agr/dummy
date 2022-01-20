@@ -5,13 +5,14 @@ import org.bson.Document;
 import java.util.ArrayList;
 
 public class ProductsManager {
-    MongoDBManager mongoDBManager = new MongoDBManager();
+    MongoDBManager mongoDBManager;
+    Gson gson;
 
     public ProductsManager() {
+        mongoDBManager = new MongoDBManager();
         mongoDBManager.connectMongoDB("localhost", 27018);
+        gson = new Gson();
     }
-
-    Gson gson = new Gson();
 
     public String insert(Product p) {
         final String asJson = gson.toJson(p);

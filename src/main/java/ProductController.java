@@ -3,10 +3,16 @@ import com.google.gson.Gson;
 import static spark.Spark.*;
 
 public class ProductController {
+    Gson gson;
+    ProductsManager productsManager;
+
+    public ProductController() {
+        gson = new Gson();
+        productsManager = new ProductsManager();
+    }
 
     public void apis() {
-        Gson gson = new Gson();
-        ProductsManager productsManager = new ProductsManager();
+
 
         get("/products/:name", (req, res) -> {
             res.type("application/json");
