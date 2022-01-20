@@ -1,7 +1,9 @@
+import com.google.gson.Gson;
 import com.mongodb.client.FindIterable;
 import org.bson.Document;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsManager {
     MongoDBManager mongoDBManager = new MongoDBManager();
@@ -10,24 +12,31 @@ public class ProductsManager {
         mongoDBManager.connectMongoDB("localhost", 27018);
     }
 
-    public void insert(Product p) {
-        Document doc = new Document();
-        doc.append("name", p.getName());
-        doc.append("price", p.getPrice());
-        doc.append("stock", p.getStock());
+    Gson gson = new Gson();
+
+    public String insert(Product p) {
+        final String asJson = gson.toJson(p);
+        final Document doc = Document.parse(asJson);
         mongoDBManager.insertIntoCollection("products", "shop", doc);
+        return "product added";
     }
 
-    public void printDocumentsByName(String name) {
+    public ArrayList<Product> getProductByName(String name) {
         FindIterable<Document> iterDoc = mongoDBManager.findDocsWithQuery("products", "shop", new Document().append("name", name));
-        Iterator it = iterDoc.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
+        ArrayList<Product> list = new ArrayList<Product>();
+        for (Document document : iterDoc) {
+            Product p = new Product();
+            p.setName((String) document.get("name"));
+            p.setPrice((Integer) document.get("price"));
+            p.setStock((Integer) document.get("stock"));
+            list.add(p);
         }
+        return list;
     }
 
-    public void deleteDocByName(String name) {
+    public String deleteProductByName(String name) {
         mongoDBManager.delete("products", "shop", new Document().append("name", name));
+        return "product deleted";
     }
 
     public void updatePrice(String name, int price) {

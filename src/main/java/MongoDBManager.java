@@ -14,11 +14,6 @@ public class MongoDBManager {
         this.mongoClient = new MongoClient(host, port);
     }
 
-    public MongoIterable<String> getListofDatabases() {
-        MongoIterable<String> list = mongoClient.listDatabaseNames();
-        return list;
-    }
-
     public MongoDatabase getDB(String dbName) {
         MongoDatabase db = mongoClient.getDatabase(dbName);
         return db;
@@ -27,11 +22,6 @@ public class MongoDBManager {
     public MongoCollection getCollection(String collection, String dbName) {
         MongoCollection myCollection = getDB(dbName).getCollection(collection);
         return myCollection;
-    }
-
-    public MongoIterable<String> getListofCollections(String dbName) {
-        MongoIterable<String> list = getDB(dbName).listCollectionNames();
-        return list;
     }
 
     public void insertIntoCollection(String collection, String db, Document doc) {
