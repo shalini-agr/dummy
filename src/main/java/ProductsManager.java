@@ -3,6 +3,7 @@ import com.mongodb.client.FindIterable;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductsManager {
     MongoDBManager mongoDBManager;
@@ -21,15 +22,11 @@ public class ProductsManager {
         return "product added";
     }
 
-    public ArrayList<Product> getProductByName(String name) {
+    public List<Product> getProductByName(String name) {
         FindIterable<Document> iterDoc = mongoDBManager.findDocsWithQuery("products", "shop", new Document().append("name", name));
-        ArrayList<Product> list = new ArrayList<Product>();
+        List<Product> list = new ArrayList<Product>();
         for (Document document : iterDoc) {
-            Product p = new Product();
-            p.setName((String) document.get("name"));
-            p.setPrice((Integer) document.get("price"));
-            p.setStock((Integer) document.get("stock"));
-            list.add(p);
+            Product p = new Product((String) document.get("name"), (Integer) document.get("price"), (Integer) document.get("stock"));
         }
         return list;
     }
