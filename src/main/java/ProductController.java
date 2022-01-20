@@ -4,9 +4,8 @@ import static spark.Spark.*;
 
 public class ProductController {
 
-    public static void main(String[] args) {
+    public void apis() {
         Gson gson = new Gson();
-
         ProductsManager productsManager = new ProductsManager();
 
         get("/products/:name", (req, res) -> {
@@ -28,6 +27,5 @@ public class ProductController {
         }, gson::toJson);
 
     }
-
 }
 
