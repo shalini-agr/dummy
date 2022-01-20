@@ -3,7 +3,6 @@ import com.mongodb.client.FindIterable;
 import org.bson.Document;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductsManager {
     MongoDBManager mongoDBManager = new MongoDBManager();
