@@ -4,7 +4,6 @@ public class Product {
     private int stock;
 
     public Product() {
-
     }
 
     String getName() {

@@ -13,7 +13,6 @@ public class ProductController {
 
     public void apis() {
 
-
         get("/products/:name", (req, res) -> {
             res.type("application/json");
             String name = req.params(":name");
