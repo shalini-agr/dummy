@@ -3,7 +3,7 @@ package Entities;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
-@Entity
+@Entity("order")
 public class Order {
     @Id
     int id;
