@@ -1,3 +1,7 @@
+package Managers;
+import Entities.User;
+import Handlers.MorphiaHandler;
+
 import java.util.List;
 
 public class UsersManager {

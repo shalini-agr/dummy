@@ -1,3 +1,7 @@
+package Controllers;
+
+import Entities.User;
+import Managers.UsersManager;
 import com.google.gson.Gson;
 
 import static spark.Spark.*;

@@ -1,3 +1,8 @@
+package Managers;
+
+import Entities.Product;
+import Handlers.MorphiaHandler;
+
 import java.util.List;
 
 public class ProductsManager {

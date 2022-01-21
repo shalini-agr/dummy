@@ -1,3 +1,7 @@
+package Controllers;
+
+import Entities.Product;
+import Managers.ProductsManager;
 import com.google.gson.Gson;
 
 import static spark.Spark.*;

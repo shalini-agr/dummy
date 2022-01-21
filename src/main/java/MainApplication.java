@@ -1,3 +1,7 @@
+import Controllers.OrderController;
+import Controllers.ProductController;
+import Controllers.UserController;
+
 public class MainApplication {
 
     public static void main(String[] args) {
