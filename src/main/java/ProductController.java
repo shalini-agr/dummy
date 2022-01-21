@@ -13,7 +13,7 @@ public class ProductController {
 
     public void apis() {
 
-        get("/products/:name", (req, res) -> {
+        get("/product/:name", (req, res) -> {
             res.type("application/json");
             String name = req.params(":name");
             return productsManager.getProductByName(name);
@@ -25,10 +25,31 @@ public class ProductController {
             return productsManager.insert(product);
         }, gson::toJson);
 
-        delete("/deleteById/:name", (req, res) -> {
+        delete("/delete/:name", (req, res) -> {
             res.type("application/json");
             String name = req.params(":name");
             return productsManager.deleteProductByName(name);
+        }, gson::toJson);
+
+        put("/updatePrice/:name", (req, res) -> {
+            res.type("application/json");
+            String name = req.params(":name");
+            Product p = gson.fromJson(req.body(), Product.class);
+            return productsManager.updatePrice(name, p.getPrice());
+        }, gson::toJson);
+
+        put("/updatePriceAndStock/:name", (req, res) -> {
+            res.type("application/json");
+            String name = req.params(":name");
+            Product p = gson.fromJson(req.body(), Product.class);
+            return productsManager.updateStockandPrice(name, p.getStock(), p.getPrice());
+        }, gson::toJson);
+
+        put("/updateStock/:name", (req, res) -> {
+            res.type("application/json");
+            String name = req.params(":name");
+            Product p = gson.fromJson(req.body(), Product.class);
+            return productsManager.updateStock(name, p.getStock());
         }, gson::toJson);
 
     }
