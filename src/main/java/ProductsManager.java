@@ -8,28 +8,34 @@ public class ProductsManager {
     }
 
     public String insert(Product p) {
-        return morphiaHandler.insert(p);
+        return morphiaHandler.insertProduct(p);
     }
 
-    public List<Product> getProductByName(String name) {
-        return morphiaHandler.getProductByName(name);
+    public List<Product> getProducts() {
+        return morphiaHandler.getProducts();
     }
 
-    public String deleteProductByName(String name) {
-        morphiaHandler.deleteByName(name);
+    public List<Product> getProductById(int id) {
+        return morphiaHandler.getProductById(id);
+    }
+
+    public String deleteProductById(int id) {
+        morphiaHandler.deleteProductById(id);
         return "product deleted";
     }
 
-    public String updatePrice(String name, int price) {
-        return morphiaHandler.updatePrice(name, price);
+    public String updatePrice(int id, int price) {
+        return morphiaHandler.updateProductPrice(id, price);
     }
 
-    public String updateStock(String name, int stock) {
-        return morphiaHandler.updateStock(name, stock);
+    public String updateStock(int id, int stock) {
+        return morphiaHandler.updateProductStock(id, stock);
     }
 
-    public String updateStockandPrice(String name, int stock, int price) {
-        return morphiaHandler.updateStockAndPrice(name, stock, price);
+    public String updateStockandPrice(int id, int stock, int price) {
+        morphiaHandler.updateProductPrice(id, price);
+        morphiaHandler.updateProductStock(id, stock);
+        return "update successful";
     }
 
 }

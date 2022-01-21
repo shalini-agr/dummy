@@ -4,6 +4,7 @@ import org.mongodb.morphia.annotations.Id;
 @Entity("product")
 public class Product {
     @Id
+    private int id;
     private String name;
     private int price;
     private int stock;
@@ -15,6 +16,14 @@ public class Product {
         this.name = name;
         this.price = price;
         this.stock = stock;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     String getName() {
