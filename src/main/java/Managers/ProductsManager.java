@@ -13,33 +13,34 @@ public class ProductsManager {
     }
 
     public String insert(Product p) {
-        return morphiaHandler.insertProduct(p);
+        morphiaHandler.insert(p);
+        return "product added";
     }
 
-    public List<Product> getProducts() {
-        return morphiaHandler.getProducts();
+    public List<Object> getProducts() {
+        return morphiaHandler.getAllDocs(Product.class);
     }
 
-    public List<Product> getProductById(int id) {
-        return morphiaHandler.getProductById(id);
+    public List<Object> getProductById(int id) {
+        return morphiaHandler.getObjById(id, Product.class);
     }
 
     public String deleteProductById(int id) {
-        morphiaHandler.deleteProductById(id);
+        morphiaHandler.delete(id, Product.class);
         return "product deleted";
     }
 
     public String updatePrice(int id, int price) {
-        return morphiaHandler.updateProductPrice(id, price);
+        return morphiaHandler.update(id, "price", price, Product.class);
     }
 
     public String updateStock(int id, int stock) {
-        return morphiaHandler.updateProductStock(id, stock);
+        return morphiaHandler.update(id, "stock", stock, Product.class);
     }
 
     public String updateStockandPrice(int id, int stock, int price) {
-        morphiaHandler.updateProductPrice(id, price);
-        morphiaHandler.updateProductStock(id, stock);
+        morphiaHandler.update(id, "price", price, Product.class);
+        morphiaHandler.update(id, "stock", stock, Product.class);
         return "update successful";
     }
 
