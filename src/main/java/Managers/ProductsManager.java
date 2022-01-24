@@ -31,16 +31,16 @@ public class ProductsManager {
     }
 
     public String updatePrice(int id, int price) {
-        return morphiaHandler.updateProduct(id, "price", price);
+        return morphiaHandler.update(id, "price", price, Product.class);
     }
 
     public String updateStock(int id, int stock) {
-        return morphiaHandler.updateProduct(id, "stock", stock);
+        return morphiaHandler.update(id, "stock", stock, Product.class);
     }
 
     public String updateStockandPrice(int id, int stock, int price) {
-        morphiaHandler.updateProduct(id, "price", price);
-        morphiaHandler.updateProduct(id, "stock", stock);
+        morphiaHandler.update(id, "price", price, Product.class);
+        morphiaHandler.update(id, "stock", stock, Product.class);
         return "update successful";
     }
 

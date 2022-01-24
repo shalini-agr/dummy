@@ -31,20 +31,20 @@ public class UsersManager {
     }
 
     public String updateName(int id, String name) {
-        return morphiaHandler.updateUser(id, "name", name);
+        return morphiaHandler.update(id, "name", name, User.class);
     }
 
     public String updatePhoneNo(int id, String phoneNo) {
-        return morphiaHandler.updateUser(id, "phoneNo", phoneNo);
+        return morphiaHandler.update(id, "phoneNo", phoneNo, User.class);
     }
 
     public String updateEmail(int id, String email) {
-        return morphiaHandler.updateUser(id, "email", email);
+        return morphiaHandler.update(id, "email", email, User.class);
     }
 
     public String updateNameAndEmail(int id, String name, String email) {
-        morphiaHandler.updateUser(id, "email", email);
-        morphiaHandler.updateUser(id, "name", name);
+        morphiaHandler.update(id, "email", email, User.class);
+        morphiaHandler.update(id, "name", name, User.class);
         return "update successful";
     }
 }

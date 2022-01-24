@@ -1,8 +1,6 @@
 package Handlers;
 
 import Entities.Order;
-import Entities.Product;
-import Entities.User;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -41,20 +39,13 @@ public class MorphiaHandler {
         datastore.delete(var, id);
     }
 
-    public String updateProduct(int id, String key, Object val) {
-        Query query = datastore.createQuery(Product.class).field("id").equal(id);
-        UpdateOperations<Product> ops;
+    public String update(int id, String key, Object val, Class var) {
+        Object query = datastore.createQuery(var).field("id").equal(id);
+        UpdateOperations<Object> ops;
         if (val instanceof String)
-            ops = datastore.createUpdateOperations(Product.class).set(key, (String) val);
+            ops = datastore.createUpdateOperations(var).set(key, (String) val);
         else
-            ops = datastore.createUpdateOperations(Product.class).set(key, (Integer) val);
-        datastore.update(query, ops);
-        return "update Successful";
-    }
-
-    public String updateUser(int id, String key, String val) {
-        Query query = datastore.createQuery(User.class).field("id").equal(id);
-        UpdateOperations<User> ops = datastore.createUpdateOperations(User.class).set(key, val);
+            ops = datastore.createUpdateOperations(var).set(key, (Integer) val);
         datastore.update(query, ops);
         return "update Successful";
     }
