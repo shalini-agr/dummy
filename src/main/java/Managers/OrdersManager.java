@@ -21,12 +21,10 @@ public class OrdersManager {
         List<Object> lis = morphiaHandler.getObjById(order.getUserId(), User.class);
         if (lis.size() == 0)
             return "user doesn't exist";
-        else {
-            for (int x : order.getProducts()) {
-                List<Object> l = morphiaHandler.getObjById(x, Product.class);
-                if (l.size() == 0)
-                    return "product with id " + x + " doesn't exit";
-            }
+        for (int x : order.getProducts()) {
+            List<Object> l = morphiaHandler.getObjById(x, Product.class);
+            if (l.size() == 0)
+                return "product with id " + x + " doesn't exit";
         }
         morphiaHandler.insert(order);
         return "order added";
