@@ -18,21 +18,8 @@ public class MorphiaHandler {
         datastore = new Morphia().createDatastore(new MongoClient("localhost", 27018), "shop");
     }
 
-    public String insert(Object obj) {
-        if (obj instanceof Order) {
-            Order order = (Order) obj;
-            List<User> q = datastore.find(User.class, "id", order.getUserId()).asList();
-            if (q.size() == 0)
-                return "user doesn't exist";
-            for (int x : order.getProducts()) {
-                List<Product> l = datastore.find(Product.class, "id", x).asList();
-                if (l.size() == 0)
-                    return "product with id " + x + " doesn't exit";
-            }
-            datastore.save(order);
-        }
+    public void insert(Object obj) {
         datastore.save(obj);
-        return "object added";
     }
 
     public List<Object> getAllDocs(Class var1) {

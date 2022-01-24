@@ -13,7 +13,8 @@ public class ProductsManager {
     }
 
     public String insert(Product p) {
-        return morphiaHandler.insert(p);
+        morphiaHandler.insert(p);
+        return "product added";
     }
 
     public List<Object> getProducts() {

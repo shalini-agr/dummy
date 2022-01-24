@@ -17,7 +17,8 @@ public class UsersManager {
     }
 
     public String insert(User p) {
-        return morphiaHandler.insert(p);
+        morphiaHandler.insert(p);
+        return "user added";
     }
 
     public List<Object> getUserById(int id) {
