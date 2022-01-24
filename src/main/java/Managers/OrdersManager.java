@@ -14,23 +14,23 @@ public class OrdersManager {
     }
 
     public String insert(Order order) {
-        return morphiaHandler.insertOrder(order);
+        return morphiaHandler.insert(order);
     }
 
-    public List<Order> getOrders() {
-        return morphiaHandler.getOrders();
+    public List<Object> getOrders() {
+        return morphiaHandler.getAllDocs(Order.class);
     }
 
     public List<Order> getOrdersOfUser(int id) {
         return morphiaHandler.getOrdersOfUser(id);
     }
 
-    public List<Order> getOrderById(int id) {
-        return morphiaHandler.getOrderById(id);
+    public List<Object> getOrderById(int id) {
+        return morphiaHandler.getObjById(id, Order.class);
     }
 
     public String delete(int id) {
-        morphiaHandler.deleteOrderById(id);
+        morphiaHandler.delete(id, Order.class);
         return "order deleted";
     }
 }

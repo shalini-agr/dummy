@@ -1,4 +1,5 @@
 package Managers;
+
 import Entities.User;
 import Handlers.MorphiaHandler;
 
@@ -11,38 +12,38 @@ public class UsersManager {
         morphiaHandler = new MorphiaHandler();
     }
 
-    public List<User> getUsers() {
-        return morphiaHandler.getUsers();
+    public List<Object> getUsers() {
+        return morphiaHandler.getAllDocs(User.class);
     }
 
     public String insert(User p) {
-        return morphiaHandler.insertUser(p);
+        return morphiaHandler.insert(p);
     }
 
-    public List<User> getUserById(int id) {
-        return morphiaHandler.getUserById(id);
+    public List<Object> getUserById(int id) {
+        return morphiaHandler.getObjById(id, User.class);
     }
 
     public String deleteUserById(int id) {
-        morphiaHandler.deleteUserById(id);
+        morphiaHandler.delete(id, User.class);
         return "user deleted";
     }
 
     public String updateName(int id, String name) {
-        return morphiaHandler.updateUserName(id, name);
+        return morphiaHandler.updateUser(id, "name", name);
     }
 
     public String updatePhoneNo(int id, String phoneNo) {
-        return morphiaHandler.updateUserPhoneNo(id, phoneNo);
+        return morphiaHandler.updateUser(id, "phoneNo", phoneNo);
     }
 
     public String updateEmail(int id, String email) {
-        return morphiaHandler.updateUserEmail(id, email);
+        return morphiaHandler.updateUser(id, "email", email);
     }
 
     public String updateNameAndEmail(int id, String name, String email) {
-        morphiaHandler.updateUserEmail(id, email);
-        morphiaHandler.updateUserName(id, name);
+        morphiaHandler.updateUser(id, "email", email);
+        morphiaHandler.updateUser(id, "name", name);
         return "update successful";
     }
 }

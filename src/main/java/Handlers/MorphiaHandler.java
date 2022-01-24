@@ -18,57 +18,30 @@ public class MorphiaHandler {
         datastore = new Morphia().createDatastore(new MongoClient("localhost", 27018), "shop");
     }
 
-    public String insertProduct(Product product) {
-        datastore.save(product);
-        return "product added";
-    }
-
-    public String insertUser(User user) {
-        datastore.save(user);
-        return "user added";
-    }
-
-    public String insertOrder(Order order) {
-        List<User> q = datastore.find(User.class, "id", order.getUserId()).asList();
-        if (q.size() == 0)
-            return "user doesn't exist";
-        for (int x : order.getProducts()) {
-            List<Product> l = datastore.find(Product.class, "id", x).asList();
-            if (l.size() == 0)
-                return "product with id " + x + " doesn't exit";
+    public String insert(Object obj) {
+        if (obj instanceof Order) {
+            Order order = (Order) obj;
+            List<User> q = datastore.find(User.class, "id", order.getUserId()).asList();
+            if (q.size() == 0)
+                return "user doesn't exist";
+            for (int x : order.getProducts()) {
+                List<Product> l = datastore.find(Product.class, "id", x).asList();
+                if (l.size() == 0)
+                    return "product with id " + x + " doesn't exit";
+            }
+            datastore.save(order);
         }
-        datastore.save(order);
-        return "order added";
+        datastore.save(obj);
+        return "object added";
     }
 
-    public List<User> getUsers() {
-        Query<User> q = datastore.find(User.class);
+    public List<Object> getAllDocs(Class var1) {
+        Query<Object> q = datastore.find(var1);
         return q.asList();
     }
 
-    public List<Order> getOrders() {
-        Query<Order> q = datastore.find(Order.class);
-        return q.asList();
-    }
-
-    public List<Product> getProducts() {
-        Query<Product> q = datastore.find(Product.class);
-        return q.asList();
-    }
-
-    public List<User> getUserById(int id) {
-        Query<User> q = datastore.find(User.class, "id", id);
-        return q.asList();
-    }
-
-    public List<Product> getProductById(int id) {
-        Query<Product> q = datastore.find(Product.class, "id", id);
-        List<Product> ll = q.asList();
-        return ll;
-    }
-
-    public List<Order> getOrderById(int id) {
-        Query<Order> q = datastore.find(Order.class, "id", id);
+    public List<Object> getObjById(int id, Class var1) {
+        Query<Object> q = datastore.find(var1, "id", id);
         return q.asList();
     }
 
@@ -77,49 +50,24 @@ public class MorphiaHandler {
         return q.asList();
     }
 
-    public void deleteUserById(int id) {
-        datastore.delete(User.class, id);
+    public void delete(int id, Class var) {
+        datastore.delete(var, id);
     }
 
-    public void deleteOrderById(int id) {
-        datastore.delete(Order.class, id);
-    }
-
-    public void deleteProductById(int id) {
-        datastore.delete(Product.class, id);
-    }
-
-    public String updateProductPrice(int id, int price) {
+    public String updateProduct(int id, String key, Object val) {
         Query query = datastore.createQuery(Product.class).field("id").equal(id);
-        UpdateOperations<Product> ops = datastore.createUpdateOperations(Product.class).set("price", price);
+        UpdateOperations<Product> ops;
+        if (val instanceof String)
+            ops = datastore.createUpdateOperations(Product.class).set(key, (String) val);
+        else
+            ops = datastore.createUpdateOperations(Product.class).set(key, (Integer) val);
         datastore.update(query, ops);
         return "update Successful";
     }
 
-    public String updateProductStock(int id, int stock) {
-        Query query = datastore.createQuery(Product.class).field("id").equal(id);
-        UpdateOperations<Product> ops = datastore.createUpdateOperations(Product.class).set("stock", stock);
-        datastore.update(query, ops);
-        return "update Successful";
-    }
-
-    public String updateUserName(int id, String name) {
+    public String updateUser(int id, String key, String val) {
         Query query = datastore.createQuery(User.class).field("id").equal(id);
-        UpdateOperations<User> ops = datastore.createUpdateOperations(User.class).set("name", name);
-        datastore.update(query, ops);
-        return "update Successful";
-    }
-
-    public String updateUserPhoneNo(int id, String phoneNo) {
-        Query query = datastore.createQuery(User.class).field("id").equal(id);
-        UpdateOperations<User> ops = datastore.createUpdateOperations(User.class).set("phoneNo", phoneNo);
-        datastore.update(query, ops);
-        return "update Successful";
-    }
-
-    public String updateUserEmail(int id, String email) {
-        Query query = datastore.createQuery(User.class).field("id").equal(id);
-        UpdateOperations<User> ops = datastore.createUpdateOperations(User.class).set("email", email);
+        UpdateOperations<User> ops = datastore.createUpdateOperations(User.class).set(key, val);
         datastore.update(query, ops);
         return "update Successful";
     }

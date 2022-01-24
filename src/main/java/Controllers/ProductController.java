@@ -34,7 +34,7 @@ public class ProductController {
             return productsManager.insert(product);
         }, gson::toJson);
 
-        delete("/delete/:id", (req, res) -> {
+        delete("/deleteProduct/:id", (req, res) -> {
             res.type("application/json");
             int id = Integer.parseInt(req.params(":id"));
             return productsManager.deleteProductById(id);

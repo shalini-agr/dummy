@@ -34,7 +34,7 @@ public class UserController {
             return usersManager.insert(user);
         }, gson::toJson);
 
-        delete("/delete/:id", (req, res) -> {
+        delete("/deleteUser/:id", (req, res) -> {
             res.type("application/json");
             int id = Integer.parseInt(req.params(":id"));
             return usersManager.deleteUserById(id);
