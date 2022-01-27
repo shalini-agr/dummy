@@ -13,6 +13,7 @@ bin/
 out/
 .classpath
 .project
+.idea/
 .gradle/
 .settings/
 .vscode/
