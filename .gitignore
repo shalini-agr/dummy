@@ -1,19 +1,4 @@
 *.class
-
-target
-
-# IntelliJ IDEA
 .idea
 *.iml
-*.ipr
-*.iws
-.ijwb
-
-build/
-.classpath
-.project
-.settings/
 target/
-
-*.jar
-*.lst
