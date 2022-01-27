@@ -1,0 +1,4 @@
+Managers/UsersManager.class
+Controllers/UserController.class
+UserService.class
+Entities/User.class
