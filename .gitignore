@@ -1,1 +1,24 @@
+# Maven (examples)
+target
+
+# IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+.ijwb
+
+build/
+bin/
+out/
+.classpath
+.project
+.gradle/
+.settings/
+.vscode/
+target/
+
 *.class
+*.iml
+*.jar
+*.lst
