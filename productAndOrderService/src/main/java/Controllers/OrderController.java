@@ -22,12 +22,6 @@ public class OrderController {
             return ordersManager.getOrders();
         }, gson::toJson);
 
-        get("/ordersOfUser/:id", (req, res) -> {
-            res.type("application/json");
-            int id = Integer.parseInt(req.params(":id"));
-            return ordersManager.getOrdersOfUser(id);
-        }, gson::toJson);
-
         get("/order/:id", (req, res) -> {
             res.type("application/json");
             int id = Integer.parseInt(req.params(":id"));

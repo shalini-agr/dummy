@@ -1,6 +1,5 @@
 package Handlers;
 
-import Entities.Order;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -27,11 +26,6 @@ public class MorphiaHandler {
 
     public List<Object> getObjById(int id, Class var1) {
         Query<Object> q = datastore.find(var1, "id", id);
-        return q.asList();
-    }
-
-    public List<Order> getOrdersOfUser(int id) {
-        Query<Order> q = datastore.find(Order.class, "userId", id);
         return q.asList();
     }
 
