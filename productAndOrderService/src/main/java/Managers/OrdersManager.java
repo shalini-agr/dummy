@@ -3,25 +3,27 @@ package Managers;
 import Entities.Order;
 
 import Handlers.MorphiaHandler;
+import com.example.dummy.UserExistClient;
 
 import java.util.List;
 
 public class OrdersManager {
 
+    UserExistClient userExistClient;
     MorphiaHandler morphiaHandler;
     ProductsManager productsManager;
 
     public OrdersManager() {
         morphiaHandler = new MorphiaHandler();
+        userExistClient = new UserExistClient();
         productsManager = new ProductsManager();
     }
 
     public String insert(Order order) {
         if (order.getProducts().length == 0)
             return "No Products added";
-//        List<Object> lis = morphiaHandler.getObjById(order.getUserId(), User.class);
-//        if (lis.size() == 0)
-//            return "user doesn't exist";
+        if (!userExistClient.doesUserExist(order.getUserId()))
+            return "user doesn't exist";
         for (int x : order.getProducts()) {
             List<Object> l = productsManager.getProductById(x);
             if (l.size() == 0)
