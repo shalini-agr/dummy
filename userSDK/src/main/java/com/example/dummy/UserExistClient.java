@@ -5,7 +5,18 @@ import io.grpc.ManagedChannelBuilder;
 
 public class UserExistClient {
 
+    UserExistServer userExistServer = new UserExistServer();
+
     public boolean doesUserExist(int userId) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    userExistServer.server();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         final ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:8080")
                 .usePlaintext(true)
                 .build();
@@ -14,11 +25,9 @@ public class UserExistClient {
                 UserExist.UserExistRequest.newBuilder()
                         .setUserId(userId)
                         .build();
-        System.out.println(request.getUserId());
         UserExist.UserExistResponse response =
                 stub.userExist(request);
         channel.shutdownNow();
-        System.out.println(response.getUser());
 
         return response.getUser();
     }

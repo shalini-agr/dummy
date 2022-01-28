@@ -12,6 +12,7 @@
         <module>handlers</module>
         <module>userService</module>
         <module>productAndOrderService</module>
+        <module>userSDK</module>
     </modules>
 
     <properties>

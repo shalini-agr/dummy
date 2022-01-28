@@ -2,11 +2,11 @@ syntax = "proto3";
 package com.example.dummy;
 
 message UserExistRequest {
-  int32 userId=1;
+  int32 userId = 1;
 }
 
 message UserExistResponse {
-  bool user =1 ;
+  bool user = 1 ;
 }
 
 service UserExistService {

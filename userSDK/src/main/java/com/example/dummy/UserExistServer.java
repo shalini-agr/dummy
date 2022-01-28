@@ -6,7 +6,7 @@ import io.grpc.ServerBuilder;
 
 public class UserExistServer {
 
-    public void server() throws Exception{
+    public void server() throws Exception {
         Server server = ServerBuilder.forPort(8080)
                 .addService((BindableService) new UserExistServiceImpl())
                 .build();

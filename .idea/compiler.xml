@@ -7,10 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="productAndOrderService" />
+        <module name="UserSDK" />
         <module name="demo" />
+        <module name="userSDK" />
         <module name="handlers" />
         <module name="userService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UserSDK" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
