@@ -1,0 +1,12 @@
+template:
+  name: ws1
+  identifier: ws1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: demo
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Wait
+    spec:
+      duration: <+input>
