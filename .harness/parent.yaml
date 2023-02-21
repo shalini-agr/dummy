@@ -53,6 +53,8 @@ pipeline:
                             type: ShellScript
                             timeout: <+stages.chained.output.timeout>
           outputs: []
+        when:
+          pipelineStatus: All
   variables:
     - name: input1
       type: String
