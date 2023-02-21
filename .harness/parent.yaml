@@ -19,7 +19,7 @@ pipeline:
               value: <+pipeline.stages.custome.spec.execution.steps.ShellScript_1.timeout>
           inputSetReferences:
             - <+pipeline.variables.input1>
-            - <+pipeline.variables.input2>
+            - input2
     - stage:
         name: stage2
         identifier: stage2
