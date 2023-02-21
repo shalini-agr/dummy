@@ -53,4 +53,4 @@ pipeline:
     - name: input2
       type: String
       description: ""
-      value: <+input>
+      value: input2
