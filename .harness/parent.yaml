@@ -14,22 +14,12 @@ pipeline:
           org: default
           pipeline: childPipeline2
           project: naidusanity
-          inputs:
-            identifier: childPipeline2
-            stages:
-              - stage:
-                  identifier: custome
-                  type: Custom
-                  spec:
-                    execution:
-                      steps:
-                        - step:
-                            identifier: ShellScript_1
-                            type: ShellScript
-                            timeout: <+input>
           outputs:
             - name: timeout
               value: <+pipeline.stages.custome.spec.execution.steps.ShellScript_1.timeout>
+          inputSetReferences:
+            - <+pipeline.variables.input1>
+            - <+pipeline.variables.input2>
     - stage:
         name: stage2
         identifier: stage2
@@ -57,6 +47,10 @@ pipeline:
           pipelineStatus: All
   variables:
     - name: input1
+      type: String
+      description: ""
+      value: <+input>
+    - name: input2
       type: String
       description: ""
       value: <+input>
