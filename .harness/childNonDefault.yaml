@@ -1,0 +1,30 @@
+pipeline:
+  name: childNonDefault
+  identifier: childNonDefault
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: child
+        identifier: child
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Shell Script_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: exit 0
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
