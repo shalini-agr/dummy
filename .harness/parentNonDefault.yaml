@@ -1,0 +1,16 @@
+pipeline:
+  name: parentNonDefault
+  identifier: parentNonDefault
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: child
+        identifier: child
+        description: ""
+        type: Pipeline
+        spec:
+          org: default
+          pipeline: childNonDefault
+          project: naidusanity
