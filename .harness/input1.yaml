@@ -1,5 +1,6 @@
 inputSet:
   name: input1
+  tags: {}
   identifier: input1
   orgIdentifier: default
   projectIdentifier: naidusanity
@@ -15,4 +16,3 @@ inputSet:
                 - step:
                     identifier: ShellScript_1
                     type: ShellScript
-                    timeout: 14m
