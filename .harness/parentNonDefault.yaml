@@ -17,4 +17,4 @@ pipeline:
           inputSetReferences: []
           outputs:
             - name: var1
-              value: <+pipeline.name>
+              value: <+pipeline.name2>
