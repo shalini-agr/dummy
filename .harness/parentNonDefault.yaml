@@ -14,3 +14,7 @@ pipeline:
           org: default
           pipeline: childNonDefault
           project: naidusanity
+          inputSetReferences: []
+          outputs:
+            - name: var1
+              value: <+pipeline.name>
