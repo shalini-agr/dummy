@@ -26,7 +26,6 @@ pipeline:
                     approvers:
                       minimumCount: 1
                       disallowPipelineExecutor: false
-                      userGroups:
-                        - account._account_all_users
+                      userGroups: <+input>
                     approverInputs: []
         tags: {}
