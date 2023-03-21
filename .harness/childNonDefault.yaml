@@ -84,7 +84,7 @@ pipeline:
           deploymentType: Kubernetes
           service:
             useFromStage:
-              stage: stage1
+              stage: stage5
           environment:
             environmentRef: dev
             deployToAll: false
