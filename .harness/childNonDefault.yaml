@@ -31,3 +31,5 @@ pipeline:
                   strategy:
                     parallelism: 3
         tags: {}
+        strategy:
+          parallelism: 3
