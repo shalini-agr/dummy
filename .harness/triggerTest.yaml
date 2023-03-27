@@ -29,3 +29,4 @@ pipeline:
                       userGroups: <+input>
                     approverInputs: []
         tags: {}
+  allowStageExecutions: true
