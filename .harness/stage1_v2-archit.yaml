@@ -1,0 +1,29 @@
+template:
+  name: stage1
+  identifier: stage1
+  type: Stage
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: step1
+              identifier: step1
+              type: HarnessApproval
+              timeout: <+input>
+              spec:
+                approvalMessage: |-
+                  Please review the following information
+                  and approve the pipeline progression
+                includePipelineExecutionHistory: true
+                approvers:
+                  minimumCount: 1
+                  disallowPipelineExecutor: false
+                  userGroups:
+                    - account._account_all_users
+                approverInputs: []
+  versionLabel: v2-archit
