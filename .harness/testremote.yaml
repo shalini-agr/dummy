@@ -1,0 +1,35 @@
+pipeline:
+  name: testremote
+  identifier: testremote
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cs
+        identifier: cs
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "a
+                          b
+                          c
+                          d
+                          e"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
