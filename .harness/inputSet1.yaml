@@ -1,6 +1,7 @@
 inputSet:
   identifier: is1
   pipeline:
+    identifier: githubtest
     stages:
       - stage:
           identifier: cs
