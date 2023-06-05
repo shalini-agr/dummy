@@ -11,4 +11,4 @@ pipeline:
                   identifier: Wait_1
                   type: Wait
                   spec:
-                    duration: 10s
+                    duration: 20s
