@@ -20,3 +20,8 @@ pipeline:
                   spec:
                     duration: <+input>
         tags: {}
+        variables:
+          - name: timeout
+            type: String
+            description: ""
+            value: <+input>
