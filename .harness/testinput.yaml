@@ -8,7 +8,7 @@ inputSet:
     identifier: githubtest
     stages:
       - stage:
-          identifier: cs
+          identifier: cs1
           type: Custom
           spec:
             execution:
@@ -22,7 +22,3 @@ inputSet:
             - name: timeout
               type: String
               value: <+input>
-  cacheResponse:
-    cacheState: VALID_CACHE
-    ttlLeft: 2591994540
-    lastUpdatedAt: 1685942222831
