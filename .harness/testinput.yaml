@@ -17,8 +17,8 @@ inputSet:
                     identifier: Wait_1
                     type: Wait
                     spec:
-                      duration: <+input>
+                      duration: 10m
           variables:
             - name: timeout
               type: String
-              value: <+input>
+              value: 10m
