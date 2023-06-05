@@ -1,0 +1,14 @@
+pipeline:
+  identifier: githubtest
+  stages:
+    - stage:
+        identifier: cs
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  identifier: Wait_1
+                  type: Wait
+                  spec:
+                    duration: 10s
