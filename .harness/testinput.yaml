@@ -1,5 +1,6 @@
 inputSet:
   name: testinput
+  tags: {}
   identifier: testinput
   orgIdentifier: default
   projectIdentifier: naidusanity
@@ -17,3 +18,11 @@ inputSet:
                     type: Wait
                     spec:
                       duration: 10m
+          variables:
+            - name: timeout
+              type: String
+              value: 10m
+  cacheResponse:
+    cacheState: VALID_CACHE
+    ttlLeft: 2591990476
+    lastUpdatedAt: 1685942163253
