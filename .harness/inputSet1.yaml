@@ -18,3 +18,7 @@ inputSet:
                     type: Wait
                     spec:
                       duration: 20s
+                - step:
+                    identifer: wew
+                    type: Wait
+                    duration: 20m
