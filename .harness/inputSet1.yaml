@@ -1,5 +1,9 @@
 inputSet:
+  name: is1
+  tags: {}
   identifier: is1
+  orgIdentifier: default
+  projectIdentifier: naidusanity
   pipeline:
     identifier: githubtest
     stages:
