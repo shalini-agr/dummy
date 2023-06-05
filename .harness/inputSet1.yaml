@@ -8,7 +8,7 @@ inputSet:
     identifier: githubtest
     stages:
       - stage:
-          identifier: cs
+          identifier: cs1
           type: Custom
           spec:
             execution:
@@ -18,7 +18,3 @@ inputSet:
                     type: Wait
                     spec:
                       duration: 20s
-                - step:
-                    identifer: wew
-                    type: Wait
-                    duration: 20m
