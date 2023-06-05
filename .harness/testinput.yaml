@@ -17,12 +17,12 @@ inputSet:
                     identifier: Wait_1
                     type: Wait
                     spec:
-                      duration: 10m
+                      duration: <+input>
           variables:
             - name: timeout
               type: String
-              value: 10m
+              value: <+input>
   cacheResponse:
     cacheState: VALID_CACHE
-    ttlLeft: 2591990476
-    lastUpdatedAt: 1685942163253
+    ttlLeft: 2591994540
+    lastUpdatedAt: 1685942222831
