@@ -16,7 +16,7 @@ pipeline:
             variables:
               - name: var1
                 type: String
-                value: <+input>
+                value: <+pipeline.variables.var1>
   variables:
     - name: Environment
       type: String
