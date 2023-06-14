@@ -66,5 +66,8 @@ template:
                                 echo "hi"
                           environmentVariables: []
                           outputVariables: []
+                  when:
+                    stageStatus: Success
+                    condition: "true"
   identifier: parallelStepGroup
   versionLabel: v1
