@@ -1,0 +1,44 @@
+template:
+  name: ciTemp1
+  type: Stage
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  spec:
+    type: CI
+    spec:
+      cloneCodebase: false
+      execution:
+        steps:
+          - step:
+              type: Run
+              name: echo group
+              identifier: echo_group_name
+              spec:
+                connectorRef: account.gcpplatform
+                image: us.gcr.io/platform-205701/test-executor:<+stage.variables.var1>
+                shell: Sh
+                command: |
+                  if [ <+matrix.groups.name> -lt 5 ]
+                  then
+                  echo <+matrix.groups.name>
+                  exit 1
+                  fi
+                  echo <+stage.currentStatus>
+                  echo <+pipeline.currentStatus>
+              when:
+                stageStatus: Success
+      infrastructure:
+        type: KubernetesDirect
+        spec:
+          connectorRef: account.harnessciplatformng
+          namespace: default
+          automountServiceAccountToken: true
+          nodeSelector: {}
+          os: Linux
+    variables:
+      - name: var1
+        type: String
+        description: ""
+        value: <+pipeline.variables.var1>
+  identifier: ciTemp1
+  versionLabel: v1
