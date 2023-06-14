@@ -66,41 +66,7 @@ pipeline:
                               environmentVariables: []
                               outputVariables: []
         tags: {}
-  variables:
-    - name: Environment
-      type: String
-      default: QA
-      value: <+input>
-    - name: Project
-      type: String
-      default: NG_PIPELINES
-      value: <+input>
-    - name: runParallelStageTests
-      type: String
-      default: "false"
-      value: <+input>
-    - name: buildNumber
-      type: String
-      default: ignore_during_not_reruns
-      value: <+input>
-    - name: isRerun
-      type: String
-      default: "false"
-      value: <+input>
-    - name: isOnlyPmsSanity
-      type: String
-      default: "false"
-      description: ""
-      value: <+input>.allowedValues(true,false)
-    - name: slack_webhook_url
-      type: Secret
-      description: ""
-      value: pipeline_alerts
-    - name: isNotify
-      type: String
-      default: "false"
-      description: ""
-      value: <+input>.allowedValues(true,false)
+  variables: []
   notificationRules:
     - name: N1
       identifier: N1
