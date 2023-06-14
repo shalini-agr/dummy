@@ -1,0 +1,69 @@
+pipeline:
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags:
+    ngPipelines: ""
+    pipelineservice: ""
+  stages:
+    - stage:
+        name: Pms_Crud
+        identifier: Pms_Crud
+        template:
+          templateRef: ciTemp1
+          versionLabel: v1
+  variables:
+    - name: Environment
+      type: String
+      default: QA
+      value: <+input>
+    - name: Project
+      type: String
+      default: NG_PIPELINES
+      value: <+input>
+    - name: runParallelStageTests
+      type: String
+      default: "false"
+      value: <+input>
+    - name: buildNumber
+      type: String
+      default: ignore_during_not_reruns
+      value: <+input>
+    - name: isRerun
+      type: String
+      default: "false"
+      value: <+input>
+    - name: isOnlyPmsSanity
+      type: String
+      default: "false"
+      description: ""
+      value: <+input>.allowedValues(true,false)
+    - name: slack_webhook_url
+      type: Secret
+      description: ""
+      value: pipeline_alerts
+    - name: isNotify
+      type: String
+      default: "false"
+      description: ""
+      value: <+input>.allowedValues(true,false)
+    - name: var1
+      type: String
+      description: ""
+      value: 34e65u
+  notificationRules:
+    - name: N1
+      identifier: N1
+      pipelineEvents:
+        - type: StageFailed
+          forStages:
+            - PMS_Regression
+            - Integration_CI_CD_CF
+      notificationMethod:
+        type: Slack
+        spec:
+          userGroups: []
+          webhookUrl: https://hooks.slack.com/services/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
+      enabled: true
+  allowStageExecutions: true
+  identifier: NGPipelinesQAAPI_Shalinitest
+  name: NG-Pipelines-QA-API - Shalini-test
