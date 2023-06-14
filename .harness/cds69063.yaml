@@ -11,6 +11,12 @@ pipeline:
         template:
           templateRef: ciTemp1
           versionLabel: v1
+          templateInputs:
+            type: CI
+            variables:
+              - name: var1
+                type: String
+                value: <+input>
   variables:
     - name: Environment
       type: String
