@@ -1,0 +1,64 @@
+template:
+  name: parallelStepGroup
+  type: Stage
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - parallel:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  timeout: 10m
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          sleep 20
+                          echo "ok"
+                    environmentVariables: []
+                    outputVariables: []
+              - stepGroup:
+                  name: sg
+                  identifier: sg
+                  steps:
+                    - step:
+                        type: HarnessApproval
+                        name: HarnessApproval_1
+                        identifier: HarnessApproval_1
+                        timeout: 1d
+                        spec:
+                          approvalMessage: Please review the following information and approve the pipeline progression
+                          includePipelineExecutionHistory: true
+                          isAutoRejectEnabled: false
+                          approvers:
+                            userGroups:
+                              - shalinitest
+                            minimumCount: 1
+                            disallowPipelineExecutor: false
+                          approverInputs: []
+                    - step:
+                        type: ShellScript
+                        name: ShellScript_2
+                        identifier: ShellScript_2
+                        timeout: 10m
+                        spec:
+                          shell: Bash
+                          onDelegate: true
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                exit 1
+                                echo "hi"
+                          environmentVariables: []
+                          outputVariables: []
+  identifier: parallelStepGroup
+  versionLabel: v1
