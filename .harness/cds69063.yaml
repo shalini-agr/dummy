@@ -55,7 +55,7 @@ pipeline:
     - name: var1
       type: String
       description: ""
-      value: "39e4314"
+      value: 39e4314
   notificationRules:
     - name: N1
       identifier: N1
