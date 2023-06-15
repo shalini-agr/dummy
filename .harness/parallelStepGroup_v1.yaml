@@ -62,9 +62,14 @@ template:
                             type: Inline
                             spec:
                               script: |-
-                                exit 1
+
                                 echo "hi"
-                          environmentVariables: []
+                                echo $var1
+                                exit 1
+                          environmentVariables:
+                            - name: var1
+                              type: String
+                              value: <+input>.executionInput()
                           outputVariables: []
                   when:
                     stageStatus: Success
