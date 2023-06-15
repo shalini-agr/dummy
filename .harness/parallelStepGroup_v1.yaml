@@ -42,7 +42,7 @@ template:
                     headers: []
                     inputVariables:
                       - name: var1
-                        value: <+input>.executionInput()
+                        value: <+input>.executionInput().regex([1-9][0-9]*)
                         type: String
                     outputVariables: []
                     requestBody: <+step.spec.inputVariables.var1>
