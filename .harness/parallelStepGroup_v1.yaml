@@ -31,41 +31,20 @@ template:
                           echo "ok"
                     environmentVariables: []
                     outputVariables: []
-              - stepGroup:
-                  name: sg
-                  identifier: sg
-                  steps:
-                    - step:
-                        type: HarnessApproval
-                        name: HarnessApproval_1
-                        identifier: HarnessApproval_1
-                        timeout: 1d
-                        spec:
-                          approvalMessage: Please review the following information and approve the pipeline progression
-                          includePipelineExecutionHistory: true
-                          isAutoRejectEnabled: false
-                          approvers:
-                            userGroups:
-                              - shalinitest
-                            minimumCount: 1
-                            disallowPipelineExecutor: false
-                          approverInputs: []
-                    - step:
-                        type: Http
-                        name: Http_1
-                        identifier: Http_1
-                        timeout: 10s
-                        spec:
-                          url: https://www.google.com
-                          method: GET
-                          headers: []
-                          inputVariables:
-                            - name: var1
-                              value: <+input>.executionInput()
-                              type: String
-                          outputVariables: []
-                  when:
-                    stageStatus: Success
-                    condition: "true"
+              - step:
+                  type: Http
+                  name: Http_1
+                  identifier: Http_1
+                  timeout: 10s
+                  spec:
+                    url: https://www.google.com
+                    method: GET
+                    headers: []
+                    inputVariables:
+                      - name: var1
+                        value: <+input>.executionInput()
+                        type: String
+                    outputVariables: []
+                    requestBody: <+step.spec.inputVariables.var1>
   identifier: parallelStepGroup
   versionLabel: v1
