@@ -51,25 +51,18 @@ template:
                             disallowPipelineExecutor: false
                           approverInputs: []
                     - step:
-                        type: ShellScript
-                        name: ShellScript_2
-                        identifier: ShellScript_2
-                        timeout: 10m
+                        type: Http
+                        name: Http_1
+                        identifier: Http_1
+                        timeout: 10s
                         spec:
-                          shell: Bash
-                          onDelegate: true
-                          source:
-                            type: Inline
-                            spec:
-                              script: |-
-
-                                echo "hi"
-                                echo $var1
-                                exit 1
-                          environmentVariables:
+                          url: https://www.google.com
+                          method: GET
+                          headers: []
+                          inputVariables:
                             - name: var1
-                              type: String
                               value: <+input>.executionInput()
+                              type: String
                           outputVariables: []
                   when:
                     stageStatus: Success
