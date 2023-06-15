@@ -664,7 +664,6 @@ pipeline:
                       timeout: 1d
                       when:
                         stageStatus: Success
-                        condition: <+stage.spec.execution.steps.Check_Build_Complete_Status.output.outputVariables.BUILD_COMPLETE_STATUS>=="FAILED"
                       failureStrategies:
                         - onFailure:
                             errors:
