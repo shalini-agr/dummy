@@ -11,6 +11,23 @@ pipeline:
         template:
           templateRef: parallelStepGroup
           versionLabel: v1
+          templateInputs:
+            type: Custom
+            spec:
+              execution:
+                steps:
+                  - parallel:
+                      - stepGroup:
+                          identifier: sg
+                          steps:
+                            - step:
+                                identifier: ShellScript_2
+                                type: ShellScript
+                                spec:
+                                  environmentVariables:
+                                    - name: var1
+                                      type: String
+                                      value: <+input>.executionInput()
   variables: []
   notificationRules:
     - name: N1
