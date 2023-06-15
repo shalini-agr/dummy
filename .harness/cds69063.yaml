@@ -68,6 +68,9 @@ pipeline:
                           rm -rf $DIR_NAME
                     environmentVariables: []
                     outputVariables: []
+                  when:
+                    stageStatus: Success
+                    condition: "false"
               - parallel:
                   - step:
                       identifier: Get_Artifact_from_Syzygy
