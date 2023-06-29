@@ -1,0 +1,19 @@
+template:
+  name: stage1
+  identifier: stage1
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: NGPipeAutoWait3yXPNAdkiX
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: q
+              identifier: q
+              template:
+                templateRef: step1
+                versionLabel: v1
