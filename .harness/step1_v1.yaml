@@ -1,0 +1,12 @@
+template:
+  name: step1
+  identifier: step1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: NGPipeAutoWait3yXPNAdkiX
+  orgIdentifier: Pipelines_NonK8s_Org_NG
+  tags: {}
+  spec:
+    type: Wait
+    spec:
+      duration: 10m
