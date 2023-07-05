@@ -1,2 +1,2 @@
 # dummy
-push event 6
+push event
