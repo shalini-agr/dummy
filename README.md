@@ -1,2 +1,2 @@
 # dummy
-test
+test -1
