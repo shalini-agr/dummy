@@ -1,3 +1,2 @@
 # dummy
-sdce
-d
+test
