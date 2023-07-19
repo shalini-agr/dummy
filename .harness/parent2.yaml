@@ -1,0 +1,55 @@
+pipeline:
+  name: parent2
+  identifier: parent2
+  projectIdentifier: shalinitest
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cs1
+        identifier: cs1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: exit 0
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+    - parallel:
+        - stage:
+            name: pp1
+            identifier: pp1
+            description: ""
+            type: Pipeline
+            spec:
+              org: default
+              pipeline: custom1
+              project: shalinitest
+        - stage:
+            name: pp2
+            identifier: pp2
+            description: ""
+            type: Pipeline
+            spec:
+              org: default
+              pipeline: custom1
+              project: shalinitest
+  variables:
+    - name: var1
+      type: String
+      description: ""
+      required: false
+      value: <+input>
