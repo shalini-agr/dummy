@@ -1,0 +1,11 @@
+inputSet:
+  name: inp
+  identifier: inp
+  orgIdentifier: default
+  projectIdentifier: shalinitest
+  pipeline:
+    identifier: parent2
+    variables:
+      - name: var1
+        type: String
+        value: <+trigger.payload.var1>
