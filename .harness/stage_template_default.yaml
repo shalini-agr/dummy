@@ -1,0 +1,29 @@
+template:
+  name: stage template default
+  identifier: stage_template_default
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: shalinitest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: stage
+              identifier: stage
+              type: HarnessApproval
+              timeout: 1d
+              spec:
+                approvalMessage: |-
+                  Please review the following information
+                  and approve the pipeline progression
+                includePipelineExecutionHistory: true
+                approvers:
+                  minimumCount: 1
+                  disallowPipelineExecutor: false
+                  userGroups: <+input>
+                isAutoRejectEnabled: false
+                approverInputs: []
