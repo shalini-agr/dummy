@@ -20,6 +20,6 @@ template:
                     name: Wait_1
                     identifier: Wait_1
                     spec:
-                      duration: 10h
+                      duration: 10m
           tags: {}
   versionLabel: v2
