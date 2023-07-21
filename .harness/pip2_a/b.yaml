@@ -1,0 +1,25 @@
+template:
+  name: pip2
+  identifier: pip2
+  type: Pipeline
+  projectIdentifier: naidusanity
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: cs
+          identifier: cs
+          description: ""
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    type: Wait
+                    name: Wait_1
+                    identifier: Wait_1
+                    spec:
+                      duration: 10m
+          tags: {}
+  versionLabel: a/b
