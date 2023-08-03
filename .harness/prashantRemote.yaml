@@ -1,6 +1,6 @@
 pipeline:
   name: prashantRemote
-  identifier: prashantRemote1
+  identifier: prashantRemote
   projectIdentifier: naidusanity
   orgIdentifier: default
   tags: {}
@@ -15,7 +15,7 @@ pipeline:
             steps:
               - step:
                   type: ShellScript
-                  name: ShellScript_1
+                  name: ShellScript_2
                   identifier: ShellScript_1
                   spec:
                     shell: Bash
