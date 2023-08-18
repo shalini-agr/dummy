@@ -21,8 +21,8 @@ inputSet:
           variables:
             - name: timeout
               type: String
-              value: <+trigger.payload.Context>
+              value: <+input>
   cacheResponse:
-    cacheState: STALE_CACHE
-    ttlLeft: 2265606737
-    lastUpdatedAt: 1692011853764
+    cacheState: VALID_CACHE
+    ttlLeft: 2591996899
+    lastUpdatedAt: 1692338299783
