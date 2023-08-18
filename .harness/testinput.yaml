@@ -1,5 +1,5 @@
 inputSet:
-  name: testinput
+  name: Test Input
   tags: {}
   identifier: testinput
   orgIdentifier: default
@@ -8,7 +8,7 @@ inputSet:
     identifier: githubtest
     stages:
       - stage:
-          identifier: cs1
+          identifier: cs
           type: Custom
           spec:
             execution:
@@ -17,8 +17,12 @@ inputSet:
                     identifier: Wait_1
                     type: Wait
                     spec:
-                      duration: 10m
+                      duration: <+input>
           variables:
             - name: timeout
               type: String
-              value: 10m
+              value: <+trigger.payload.Context>
+  cacheResponse:
+    cacheState: STALE_CACHE
+    ttlLeft: 2265606737
+    lastUpdatedAt: 1692011853764
