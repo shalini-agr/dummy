@@ -1,0 +1,17 @@
+version: 1
+kind: pipeline
+spec:
+  stages:
+    - type: custom
+      spec:
+        steps:
+          - type: shell-script
+            timeout: 20s
+            description: Shell Script step description
+            spec:
+              on_delegate: true
+              shell: bash
+              source:
+                type: inline
+                spec:
+                  script: echo 1
