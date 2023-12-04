@@ -1,0 +1,10 @@
+version: 1
+kind: pipeline
+spec:
+  stages:
+    - type: Custom
+      spec:
+        steps:
+          - type: Wait
+            spec:
+              duration: 10m
