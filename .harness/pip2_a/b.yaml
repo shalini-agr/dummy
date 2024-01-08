@@ -8,7 +8,7 @@ template:
   spec:
     stages:
       - stage:
-          name: cs
+          name: cswer
           identifier: cs
           description: ""
           type: Custom
