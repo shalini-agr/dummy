@@ -1,3 +1,2 @@
 # dummy
-testf
-d
+test
