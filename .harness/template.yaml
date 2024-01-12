@@ -1,0 +1,19 @@
+version: 1
+kind: template
+spec:
+  type: pipeline
+  spec:
+    stages:
+      - name: custom
+        type: custom
+        spec:
+          steps:
+            - name: http
+              type: http
+              spec:
+                url: https://www.google.com
+                method: GET
+                headers: []
+                input_vars: {}
+                output_vars: {}
+              timeout: 11d
