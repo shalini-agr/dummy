@@ -1,0 +1,37 @@
+template:
+  inputs:
+    conn:
+      type: connector
+    repo:
+      type: string
+    tags:
+      type: string
+  stage:
+    steps:
+      - name: Create Dockerfile
+        run:
+          script: |
+            touch Dockerfile
+            cat > Dockerfile <<- EOM
+            FROM alpine:latest AS dev-env
+            ARG foo
+            RUN echo "$foo bar"
+            ENTRYPOINT ["pwd"]
+            FROM alpine:latest AS release-env
+            ARG hello
+            RUN echo "$hello world"
+            ENTRYPOINT ["ls"]
+            EOM
+            cat Dockerfile
+          container:
+            image: alpine
+      - name: Build and Push to Docker
+        run: 
+          container:
+            image: plugins/kaniko:1.8.10
+          with: 
+            USERNAME: <+inputs.conn.username>
+            PASSWORD: <+inputs.conn.password>
+            REGISTRY: <+inputs.conn.url>
+            REPO: <+inputs.repo>
+            TAGS: <+inputs.tags>
