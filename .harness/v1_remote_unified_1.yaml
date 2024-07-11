@@ -8,7 +8,7 @@ pipeline:
   stages:
     - name: Build and Push to Docker
       action:
-        uses: template_with_docker
+        uses: account.template_with_docker
         with:
           conn: <+inputs.conn1>
           repo: shaliniagr/todolist-random-temp
