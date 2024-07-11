@@ -8,8 +8,8 @@ pipeline:
   stages:
     - name: Build and Push to Docker
       action:
-        uses: account.template_with_docker
+        uses: account.template_with_docker_remote
         with:
-          conn: <+inputs.conn1>
+          conn: <+inputs.conn1.id>
           repo: shaliniagr/todolist-random-temp
           tags: harnesstest
