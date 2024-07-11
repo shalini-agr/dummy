@@ -1,0 +1,9 @@
+pipeline:
+  stages:
+    - name: Build and Push to Docker
+      action:
+        uses: template_with_docker
+        with:
+          conn: dock1
+          repo: shaliniagr/todolist-random-temp
+          tags: harnesstest
