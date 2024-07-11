@@ -1,9 +1,14 @@
 pipeline:
+  inputs:
+    conn1:
+      type: connector
+      value: github
+      oneof: [github]
   stages:
     - name: Build and Push to Docker
       action:
-        uses: template_with_docker
+        uses: template_with_docker_remote_1
         with:
-          conn: gituhb
+          conn: <+inputs.conn1.id>
           repo: shaliniagr/todolist-random-temp
           tags: harnesstest
