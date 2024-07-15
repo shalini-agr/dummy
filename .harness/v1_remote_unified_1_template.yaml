@@ -26,12 +26,12 @@ template:
           container:
             image: alpine
       - name: Build and Push to Docker
-        run: 
+        run:
           container:
             image: plugins/kaniko:1.8.10
-          with: 
+          with:
             USERNAME: <+inputs.conn.username>
-            PASSWORD: <+inputs.conn.token>
+            PASSWORD: <+inputs.conn.password>
             REGISTRY: <+inputs.conn.url>
             REPO: <+inputs.repo>
             TAGS: <+inputs.tags>
