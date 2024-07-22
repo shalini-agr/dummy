@@ -1,14 +1,14 @@
 inputSet:
-  name: Test Input
+  name: testInput
   tags: {}
-  identifier: testinput
+  identifier: testInput
   orgIdentifier: default
-  projectIdentifier: naidusanity
+  projectIdentifier: unified_pipeline_demo
   pipeline:
-    identifier: githubtest
+    identifier: nkj
     stages:
       - stage:
-          identifier: cs
+          identifier: kj
           type: Custom
           spec:
             execution:
@@ -17,12 +17,4 @@ inputSet:
                     identifier: Wait_1
                     type: Wait
                     spec:
-                      duration: <+input>
-          variables:
-            - name: timeout
-              type: String
-              value: <+input>
-  cacheResponse:
-    cacheState: VALID_CACHE
-    ttlLeft: 2591996899
-    lastUpdatedAt: 1692338299783
+                      duration: 1h
