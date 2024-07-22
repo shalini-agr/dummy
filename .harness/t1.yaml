@@ -1,0 +1,12 @@
+template:
+  name: w11
+  identifier: w11
+  versionLabel: v1
+  type: Step
+  projectIdentifier: unified_pipeline_demo
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Wait
+    spec:
+      duration: 10m
