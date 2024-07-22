@@ -1,7 +1,7 @@
 inputSet:
-  name: testInput
+  name: testinput
   tags: {}
-  identifier: testInput
+  identifier: testinput
   orgIdentifier: default
   projectIdentifier: unified_pipeline_demo
   pipeline:
