@@ -17,4 +17,4 @@ inputSet:
                     identifier: Wait_1
                     type: Wait
                     spec:
-                      duration: 1h
+                      duration: 10h
