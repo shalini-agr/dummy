@@ -1,0 +1,19 @@
+inputSet:
+  name: is1
+  identifier: is1
+  orgIdentifier: default
+  projectIdentifier: unified_pipeline_demo
+  pipeline:
+    identifier: nkj
+    stages:
+      - stage:
+          identifier: kj
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: Wait_1
+                    type: Wait
+                    spec:
+                      duration: 1h
