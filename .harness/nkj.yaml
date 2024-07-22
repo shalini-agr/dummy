@@ -1,7 +1,7 @@
 pipeline:
   name: nkj
   identifier: nkj
-  projectIdentifier: testProject
+  projectIdentifier: unified_pipeline_demo
   orgIdentifier: default
   tags: {}
   stages:
