@@ -2,9 +2,9 @@ pipeline:
   inputs:
     conn1:
       type: connector
-      value: gituhb
-      oneOf:
-        - github
+      value: dock1
+      oneof:
+        - docker
   stages:
     - name: Build and Push to Docker
       action:
