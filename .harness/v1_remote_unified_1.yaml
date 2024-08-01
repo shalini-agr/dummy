@@ -12,4 +12,4 @@ pipeline:
         with:
           conn: <+inputs.conn1.id>
           repo: shaliniagr/todolist-random-temp
-          tags: harnesstest_trigger3
+          tags: harnesstest_trigger4
