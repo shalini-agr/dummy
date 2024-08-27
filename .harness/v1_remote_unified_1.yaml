@@ -6,7 +6,7 @@ pipeline:
       oneof:
         - docker
   stages:
-    - name: Build and Push to Docker
+    - name: Build and Push to Dockerm
       action:
         uses: account.template_with_docker_remote
         with:
