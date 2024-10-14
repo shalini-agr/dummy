@@ -13,7 +13,7 @@ pipeline:
           execution:
             steps:
               - step:
-                  identifier: Queuew
+                  identifier: Queue
                   type: Queue
                   name: Queue
                   spec:
