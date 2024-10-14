@@ -13,6 +13,7 @@
         <module>userService</module>
         <module>productAndOrderService</module>
         <module>userSDK</module>
+        <module>debeziumService</module>
     </modules>
 
     <properties>
@@ -54,6 +55,26 @@
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
             <version>1.24.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-api</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-embedded</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-connector-mongodb</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.debezium</groupId>
+            <artifactId>debezium-connector-mysql</artifactId>
+            <version>1.4.2.Final</version>
         </dependency>
     </dependencies>
 

@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="productAndOrderService" />
-        <module name="UserSDK" />
-        <module name="demo" />
         <module name="userSDK" />
         <module name="handlers" />
+        <module name="UserSDK" />
+        <module name="demo" />
+        <module name="debeziumService" />
         <module name="userService" />
       </profile>
     </annotationProcessing>
