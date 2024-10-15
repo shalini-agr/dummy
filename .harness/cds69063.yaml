@@ -8,7 +8,7 @@ pipeline:
     - stage:
         identifier: release
         type: Custom
-        name: release
+        name: release1
         spec:
           execution:
             steps:
