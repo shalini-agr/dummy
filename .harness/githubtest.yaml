@@ -25,3 +25,9 @@ pipeline:
             type: String
             description: ""
             value: <+input>
+  variables:
+    - name: test
+      type: String
+      description: ""
+      required: false
+      value: <+input>
