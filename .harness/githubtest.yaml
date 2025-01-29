@@ -19,6 +19,24 @@ pipeline:
                   identifier: Wait_1
                   spec:
                     duration: <+input>
+              - step:
+                  type: FilesUpload
+                  name: FilesUpload_1
+                  identifier: FilesUpload_1
+                  spec: {}
+                  timeout: 30m
+              - step:
+                  type: FilesUpload
+                  name: FilesUpload_2
+                  identifier: FilesUpload_2
+                  spec: {}
+                  timeout: 30m
+              - step:
+                  type: FilesUpload
+                  name: FilesUpload_3
+                  identifier: FilesUpload_3
+                  spec: {}
+                  timeout: 30m
         tags: {}
         variables:
           - name: timeout
